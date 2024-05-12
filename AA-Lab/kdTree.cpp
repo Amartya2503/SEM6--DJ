@@ -22,9 +22,11 @@ class TreeNode{
             this->val = val;
         }
 };
+
 void display(TreeNode* head){
 
 }
+
 TreeNode* insertion(TreeNode* head,int k){
     cout<<" creating a new node "<<endl;
     vector<int> val(k, 0);
@@ -43,7 +45,7 @@ TreeNode* insertion(TreeNode* head,int k){
         return newNode;
     }
     while(temp){
-        int compIndex = depth%k;
+        int compIndex = depth % k;
         cout<<" comparing index is "<<compIndex<<endl;
         if(temp->val[compIndex] <= val[compIndex]){
             cout<<" going right at depth "<<depth<<endl;
