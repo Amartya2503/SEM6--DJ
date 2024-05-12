@@ -27,8 +27,9 @@ def convexHull(points):
     def sorthelp(point):
         return math.atan2(point[1] - start[1], point[0] - start[0])
     
-    #now we have sorted the points using sorted which will return a new list of sorted points
+    #now we have sorted the points using sorted which will return a new list of sorted points(sort just updates the previous list but sorted returns a new list)
     sorted_points = sorted(points, key = sorthelp)
+    print(sorted_points)
     
     stack = [start,sorted_points[0]]
     #now we iterate through the points 

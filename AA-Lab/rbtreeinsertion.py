@@ -142,7 +142,7 @@ def rbinsertion(head, value):
             if temp.right:
                 temp = temp.right
             else:
-                print("insertin at depth ", depth+1)
+                print("inserting at depth ", depth+1)
                 temp.right = node
                 node.color = 1
                 node.parent = temp
@@ -151,10 +151,11 @@ def rbinsertion(head, value):
             if temp.left:
                 temp = temp.left
             else:
-                print("insertin at depth ", depth+1)
+                print("inserting at depth ", depth+1)
                 temp.left = node
                 node.color = 1
                 node.parent = temp
 
         depth += 1
+    
     checkconflict(node, depth)

@@ -91,27 +91,43 @@
 # 4. now get a stack in which insert the first 2 elements for all the following elements while the size of stack is greater than 2 and the incoming point is not making an anticlock movement keep popping the top of stack
 # 5. at the end we are left with the elements present in the grahams scan algo
 # def grahams(points):
+import math    
+def orient(p,q,r):
+    val = (r[0]-q[0])*(q[1]- p[1]) - (q[0] - p[0])*(r[1] - q[1])
+    if val == 0:
+        return 0 #same direction
+    if val >0 :
+        return 1 #clock
+    if val <0 :
+        return 2
+
+def grahamsScan(points):
+    n = len(points)
     
-                
+    if n < 3:
+        return None
+    
+    start = min(points, key= lambda point: (point[1], point[0]))
+    print('min point is ', start)
+    
+    def sortHelp(point):
+        return math.atan2(point[1]- start[1], point[0] - start[0])
+    
+    sorted_point = sorted(points, key= sortHelp)
+    print(f'sorted points are {sorted_point}')
+    stack = [start, sorted_point[0]]
+    for i in range(1,len(sorted_point)):
+        while len(stack) >1 and orient(stack[-2], stack[-1], sorted_point[i]) != 2:
+            stack.pop()
+        stack.append(sorted_point[i])
+    
+    print(f'the elements of grahams convex hull are {stack}')
+    return
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+points = [(0,0),(1,1),(2,2),(3,3),(4,4),(0,3),(1,2),(3,1)]
+grahamsScan(points)
+    
+    
+    
+    
+    
